@@ -52,19 +52,6 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
 	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
 
-RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /usr/local/etc/php/apache2/php.ini && \
-    sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /usr/local/etc/php/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /usr/local/etc/php/cli/php.ini && \
-    sed -i 's/\;date\.timezone\ \=/date\.timezone\ \=\ Asia\/Ho_Chi_Minh/g' /usr/local/etc/php/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /usr/local/etc/php/apache2/php.ini && \
-    sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 520M/" /usr/local/etc/php/cli/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /usr/local/etc/php/apache2/php.ini && \
-    sed -i "s/post_max_size = 8M/post_max_size = 520M/" /usr/local/etc/php/cli/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /usr/local/etc/php/apache2/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /usr/local/etc/php/apache2/php.ini && \
-    sed -i "s/max_input_time = 60/max_input_time = 3600/" /usr/local/etc/php/cli/php.ini && \
-    sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /usr/local/etc/php/cli/php.ini
-    
 COPY docker-entrypoint.sh /entrypoint.sh
 
 ENV LC_ALL C.UTF-8
