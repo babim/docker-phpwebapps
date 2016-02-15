@@ -1,7 +1,7 @@
 FROM php:5.6-apache
 
 RUN apt-get update && apt-get install -y \
-	bzip2 \
+	bzip2 locales \
 	libcurl4-openssl-dev \
 	libfreetype6-dev \
 	libicu-dev \
@@ -12,6 +12,10 @@ RUN apt-get update && apt-get install -y \
 	libpq-dev \
 	libxml2-dev \
 	&& rm -rf /var/lib/apt/lists/*
+	
+RUN dpkg-reconfigure locales && \
+    locale-gen en_US.UTF-8 && \
+    /usr/sbin/update-locale LANG=C.UTF-8
 
 #gpg key from https://owncloud.org/owncloud.asc
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys E3036906AD9F30807351FAC32D5D5E97F6978A26
@@ -62,6 +66,9 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /usr/local/etc/p
     sed -i "s/max_execution_time = 30/max_execution_time = 3600/" /usr/local/etc/php/cli/php.ini
     
 COPY docker-entrypoint.sh /entrypoint.sh
+
+ENV LC_ALL en_US.UTF-8
+ENV TZ Asia/Ho_Chi_Minh
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
