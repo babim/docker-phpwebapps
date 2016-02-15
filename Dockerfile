@@ -67,7 +67,7 @@ RUN sed -ri 's/^display_errors\s*=\s*Off/display_errors = On/g' /usr/local/etc/p
     
 COPY docker-entrypoint.sh /entrypoint.sh
 
-ENV LC_ALL en_US.UTF-8
+ENV LC_ALL C.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
 
 ENTRYPOINT ["/entrypoint.sh"]
