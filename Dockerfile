@@ -6,6 +6,7 @@ RUN curl -fsSL -o /usr/src/joomla.zip \
 		"https://github.com/joomla/joomla-cms/releases/download/${JOOMLA_VERSION}/Joomla_${JOOMLA_VERSION}-Stable-Full_Package.zip"
 
 COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 WORKDIR /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
