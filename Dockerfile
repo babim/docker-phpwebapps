@@ -37,10 +37,10 @@ RUN pecl install APCu-4.0.10 redis memcached \
 
 RUN a2enmod rewrite
 
-ENV SMF_VERSION 8.2.2
+ENV SMF_VERSION 2-0-11
 
 RUN curl -fsSL -o smf.tar.bz2 \
-		"http://download.simplemachines.org/index.php?thanks;filename=smf_${SMF_VERSION}_install.tar.bz2" \
+		"http://download.simplemachines.org/index.php/smf_${SMF_VERSION}_install.tar.bz2" \
 	&& tar -xjf smf.tar.bz2 -C /usr/src/
 
 COPY docker-entrypoint.sh /entrypoint.sh
