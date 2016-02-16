@@ -41,16 +41,12 @@ RUN pecl install APCu-4.0.10 redis memcached \
 
 RUN a2enmod rewrite
 
-ENV OWNCLOUD_VERSION 8.2.2
 VOLUME /var/www/html
 
-RUN curl -fsSL -o owncloud.tar.bz2 \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
-	&& curl -fsSL -o owncloud.tar.bz2.asc \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2.asc" \
-	&& gpg --verify owncloud.tar.bz2.asc \
-	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
-	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
+# https://www.drupal.org/node/3060/release
+ENV DRUPAL_VERSION 8.0.3
+
+RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o /usr/src/drupal.tar.gz
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
