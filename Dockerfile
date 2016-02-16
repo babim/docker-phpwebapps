@@ -40,7 +40,7 @@ RUN a2enmod rewrite
 ENV JOOMLA_VERSION 3.4.8
 
 RUN curl -fsSL -o /usr/src/joomla.zip \
-		"httpshttps://github.com/joomla/joomla-cms/releases/download/${JOOMLA_VERSION}/Joomla_${JOOMLA_VERSION}-Stable-Full_Package.zip"
+		"https://github.com/joomla/joomla-cms/releases/download/${JOOMLA_VERSION}/Joomla_${JOOMLA_VERSION}-Stable-Full_Package.zip"
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
