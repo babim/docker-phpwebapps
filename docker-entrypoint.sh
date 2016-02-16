@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
 
-if [ ! -e '/var/www/html/version.php' ]; then
-	tar cf - --one-file-system -C /usr/src/owncloud . | tar xf -
+if [ ! -e '/var/www/html/index.php' ]; then
+	tar xvf /usr/src/drupal.tar.gz -C /var/www/
+	mv /var/www/drupal*/ /var/www/html/ && mv /var/www/drupal*/.* /var/www/html/
 	chown -R www-data /var/www/html
 fi
-
+VOLUME /var/www/html
 exec "$@"
