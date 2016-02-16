@@ -2,7 +2,7 @@
 set -e
 
 if [ ! -e '/var/www/html/index.php' ]; then
-	unzip /usr/src/prestashop.zip
+	unzip /usr/src/prestashop.zip -d /var/www/
 	mv /var/www/prestashop/ /var/www/html/ && mv /var/www/prestashop/.* /var/www/html/
 	chown -R www-data /var/www/html
 fi
