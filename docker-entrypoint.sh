@@ -6,5 +6,5 @@ if [ ! -e '/var/www/html/index.php' ]; then
 	mv /var/www/drupal*/ /var/www/html/ && mv /var/www/drupal*/.* /var/www/html/
 	chown -R www-data /var/www/html
 fi
-VOLUME /var/www/html
+
 exec "$@"
