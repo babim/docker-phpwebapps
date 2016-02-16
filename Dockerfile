@@ -41,16 +41,8 @@ RUN pecl install APCu-4.0.10 redis memcached \
 
 RUN a2enmod rewrite
 
-ENV OWNCLOUD_VERSION 8.2.2
-VOLUME /var/www/html
-
-RUN curl -fsSL -o owncloud.tar.bz2 \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
-	&& curl -fsSL -o owncloud.tar.bz2.asc \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2.asc" \
-	&& gpg --verify owncloud.tar.bz2.asc \
-	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
-	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
+# Install Wordpress
+ADD https://wordpress.org/latest.tar.gz /usr/src/wordpress.tar.gz
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
