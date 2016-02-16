@@ -37,8 +37,10 @@ RUN pecl install APCu-4.0.10 redis memcached \
 
 RUN a2enmod rewrite
 
-RUN curl -fsSL -o /usr/src/joomla.zip \
-		"httpshttps://github.com/joomla/joomla-cms/releases/download/${JOOMLA_VERSION}/Joomla_${JOOMLA_VERSION}-Stable-Full_Package.zip"
+ENV PHPBB_VERSION 3.1.7-pl1
+
+RUN curl -fsSL -o /usr/src/phpbb.zip \
+		"https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.zip"
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
