@@ -45,5 +45,6 @@ COPY docker-entrypoint.sh /entrypoint.sh
 ENV LC_ALL C.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
 
+VOLUME /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
