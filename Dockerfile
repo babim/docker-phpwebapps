@@ -17,10 +17,6 @@ RUN dpkg-reconfigure locales && \
     locale-gen en_US.UTF-8 && \
     /usr/sbin/update-locale LANG=C.UTF-8
 
-#gpg key from https://owncloud.org/owncloud.asc
-RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys E3036906AD9F30807351FAC32D5D5E97F6978A26
-
-# https://doc.owncloud.org/server/8.1/admin_manual/installation/source_installation.html#prerequisites
 RUN docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
 	&& docker-php-ext-install gd intl mbstring mcrypt mysql opcache pdo_mysql pdo_pgsql pgsql zip
 
@@ -41,21 +37,16 @@ RUN pecl install APCu-4.0.10 redis memcached \
 
 RUN a2enmod rewrite
 
-ENV OWNCLOUD_VERSION 8.2.2
-VOLUME /var/www/html
+ENV SMF_VERSION 8.2.2
 
-RUN curl -fsSL -o owncloud.tar.bz2 \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
-	&& curl -fsSL -o owncloud.tar.bz2.asc \
-		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2.asc" \
-	&& gpg --verify owncloud.tar.bz2.asc \
-	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
-	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
+RUN curl -fsSL -o smf.tar.bz2 \
+		"http://download.simplemachines.org/index.php?thanks;filename=smf_${SMF_VERSION}_install.tar.bz2"
 
 COPY docker-entrypoint.sh /entrypoint.sh
 
 ENV LC_ALL C.UTF-8
 ENV TZ Asia/Ho_Chi_Minh
 
+VOLUME /var/www/html
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
