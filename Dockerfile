@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 ENV PHPBB_VERSION 3.1.7-pl1
 
