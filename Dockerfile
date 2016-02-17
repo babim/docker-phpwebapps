@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 ENV SMF_VERSION 2-0-11
 
