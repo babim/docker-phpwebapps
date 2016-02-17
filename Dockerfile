@@ -8,6 +8,6 @@ RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /var/www/html
+WORKDIR /var/www
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
