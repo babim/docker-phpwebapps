@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 ENV JOOMLA_VERSION 3.4.8
 
