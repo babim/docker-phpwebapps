@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 # Install prestashop
 RUN wget https://sourceforge.net/projects/prestashop/files/latest/download && mv download /usr/src/prestashop.zip
