@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 # https://www.drupal.org/node/3060/release
 ENV DRUPAL_VERSION 8.0.3
