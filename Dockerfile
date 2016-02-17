@@ -1,4 +1,4 @@
-FROM babim/phpbase:5apache
+FROM babim/phpbase:5fpm
 
 # Install Wordpress
 ADD https://wordpress.org/latest.tar.gz /usr/src/wordpress.tar.gz
