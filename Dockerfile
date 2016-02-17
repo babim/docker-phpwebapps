@@ -6,6 +6,6 @@ RUN wget https://sourceforge.net/projects/prestashop/files/latest/download && mv
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-WORKDIR /var/www/html
+WORKDIR /var/www
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
