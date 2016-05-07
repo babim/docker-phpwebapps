@@ -5,6 +5,17 @@ FROM babim/phpbase:5fpm
 
 ENV OWNCLOUD_VERSION 9.0.2
 
+RUN apt-get update && \
+	apt-get install -y --force-yes bzip2
+
+RUN apt-get clean && \
+    apt-get autoclean && \
+    apt-get autoremove -y && \
+    rm -rf /build && \
+    rm -rf /tmp/* /var/tmp/* && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -f /etc/dpkg/dpkg.cfg.d/02apt-speedup
+    
 RUN curl -fsSL -o owncloud.tar.bz2 \
 		"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2" \
 	#&& curl -fsSL -o owncloud.tar.bz2.asc \
