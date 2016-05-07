@@ -22,7 +22,7 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	#	"https://download.owncloud.org/community/owncloud-${OWNCLOUD_VERSION}.tar.bz2.asc" \
 	#&& gpg --verify owncloud.tar.bz2.asc \
 	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
-	&& rm owncloud.tar.bz2 owncloud.tar.bz2.asc
+	&& rm owncloud.tar.bz2
 
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
