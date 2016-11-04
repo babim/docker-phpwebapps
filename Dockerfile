@@ -8,4 +8,4 @@ RUN chmod +x /entrypoint.sh
 
 WORKDIR /var/www
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["apache2-foreground"]
+CMD ["php-fpm"]
