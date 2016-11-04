@@ -3,7 +3,7 @@ FROM babim/phpbase:5fpm
 #gpg key from https://owncloud.org/owncloud.asc
 #RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys E3036906AD9F30807351FAC32D5D5E97F6978A26
 
-ENV OWNCLOUD_VERSION 9.0.2
+ENV OWNCLOUD_VERSION 9.1.1
 
 RUN apt-get update && \
 	apt-get install -y --force-yes bzip2
