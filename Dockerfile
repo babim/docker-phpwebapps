@@ -1,6 +1,6 @@
 FROM babim/phpbase:5fpm
 
-ENV PHPBB_VERSION 3.1.7-pl1
+ENV PHPBB_VERSION 3.1.10
 
 RUN curl -fsSL -o /usr/src/phpbb.zip \
 		"https://www.phpbb.com/files/release/phpBB-${PHPBB_VERSION}.zip"
@@ -10,4 +10,4 @@ RUN chmod +x /entrypoint.sh
 
 WORKDIR /var/www
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["apache2-foreground"]
+CMD ["php-fpm"]
