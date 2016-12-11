@@ -28,3 +28,20 @@ docker run --name php -it -v /data/phpconfig:/usr/local/etc/php/conf.d -v /data/
 /usr/local/etc/php/conf.d
 /var/www
 ```
+Environment
+```
+TIMEZONE
+PHP_MEMORY_LIMIT
+MAX_UPLOAD
+PHP_MAX_FILE_UPLOAD
+PHP_MAX_POST
+MAX_INPUT_TIME
+MAX_EXECUTION_TIME
+```
+with environment ID:
+```
+auid = user id
+agid = group id
+auser = username
+Default: agid = auid
+```
