@@ -24,6 +24,7 @@ RUN curl -fsSL -o owncloud.tar.bz2 \
 	&& tar -xjf owncloud.tar.bz2 -C /usr/src/ \
 	&& rm owncloud.tar.bz2
 
+RUN if [ -f "/entrypoint.sh" ]; then mv /entrypoint.sh /run.sh; fi
 COPY docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
