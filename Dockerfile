@@ -23,7 +23,7 @@ RUN apt-get -q update && apt-get -q install curl apache2 libapache2-mod-php5 php
     rm -rf /var/www/html/install && \
     chown -R www-data:www-data /var/www
 
-ADD entrypoint.sh /entrypoint.sh
+ADD docker-entrypoint.sh /entrypoint.sh
 
 CMD ["tailf", "/var/log/apache2/error.log"]
 ENTRYPOINT ["/entrypoint.sh"]
