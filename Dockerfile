@@ -1,6 +1,6 @@
 FROM babim/phpbase:5fpm
 
-ENV JOOMLA_VERSION 3.6.4
+ENV JOOMLA_VERSION 3.8.0
 
 RUN curl -fsSL -o /usr/src/joomla.zip \
 		"https://github.com/joomla/joomla-cms/releases/download/${JOOMLA_VERSION}/Joomla_${JOOMLA_VERSION}-Stable-Full_Package.zip"
